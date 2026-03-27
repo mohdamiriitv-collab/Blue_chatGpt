@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Interaction Study</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            background: #111827;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            text-align: center;
+            width: 420px;
+        }
+
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #9ca3af;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #4b5563;
+            color: white;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #6b7280;
+        }
+
+        .loading {
+            display: none;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #9ca3af;
+        }
+
+        .spinner {
+            margin: 15px auto;
+            width: 30px;
+            height: 30px;
+            border: 3px solid #374151;
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>AI Interaction Study</h1>
+    <p>
+        You will interact with an AI system for a short task.<br>
+        Click below to begin.
+    </p>
+
+    <button onclick="startStudy()">Start</button>
+
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        Preparing your interface...
+    </div>
+
+</div>
+
+<script>
+function startStudy() {
+    document.querySelector("button").style.display = "none";
+    document.getElementById("loading").style.display = "block";
+
+    // Random assignment
+    let group = Math.random() < 0.5 ? "A" : "B";
+    localStorage.setItem("experiment_group", group);
+
+    // Small delay for realism
+    setTimeout(() => {
+        if (group === "A") {
+            window.location.href = "blue.html";
+        } else {
+            window.location.href = "green.html";
+        }
+    }, 1500);
+}
+</script>
+
+</body>
+</html>
